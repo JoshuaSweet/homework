@@ -181,15 +181,11 @@ public class CSVFile implements FileInterface {
 	 */
 	public void sortByLastNameFirstNameAscending() {
 		
-		List<Enrollee> lastNameResult = enrollees.stream()
-				.sorted( Comparator.comparing( Enrollee::getLastName ))
+		List<Enrollee> result = enrollees.stream()
+				.sorted( Comparator.comparing( Enrollee::getLastName ).thenComparing( Enrollee::getFirstName ) )
 				.collect( Collectors.toList() );
 		
-		List<Enrollee> firstNameResult = lastNameResult.stream()
-				.sorted( Comparator.comparing( Enrollee::getLastName ))
-				.collect( Collectors.toList() );
-		
-		this.setEnrollees( firstNameResult );
+		this.setEnrollees( result );
 		
 	}
 	
