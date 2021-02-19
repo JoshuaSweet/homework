@@ -60,11 +60,7 @@ public class CSVFile implements FileInterface {
 			lines.close();
 			this.fileArray = this.fileString.split( "\n" );
 			
-			if ( this.validate() ) {
-				
-				this.process();
-				
-			} else {
+			if ( !this.validate() ) {
 				
 				throw new IOException( ERROR_FILE_FORMAT );
 				
