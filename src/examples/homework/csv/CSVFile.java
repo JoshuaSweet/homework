@@ -206,7 +206,8 @@ public class CSVFile implements FileInterface {
 			
 		}
 		
-		this.enrollees = new ArrayList<Enrollee>( versionIndex.values() );
+		List<Enrollee> deDuplicatedEnrollees = new ArrayList<Enrollee>( versionIndex.values() );
+		this.setEnrollees( deDuplicatedEnrollees );
 		
 	}
 	
